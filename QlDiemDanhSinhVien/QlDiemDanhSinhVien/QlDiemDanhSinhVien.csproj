@@ -308,7 +308,6 @@
     <Compile Include="Areas\SinhVien\Controllers\QuaTrinhHocController.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Common\BusinessException.cs" />
-    <Compile Include="Common\PageControl.cs" />
     <Compile Include="Common\Resource.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -331,8 +330,6 @@
     <Compile Include="Models\CustomDiemDanh.cs" />
     <Compile Include="Models\CustomLopMon.cs" />
     <Compile Include="Models\InsertMultipleHocSinhLopMon.cs" />
-    <Compile Include="Models\LopMonVM.cs" />
-    <Compile Include="Models\SinhVienLopMonVM.cs" />
     <Compile Include="Models\TaiKhoanInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -437,12 +434,6 @@
     <Content Include="Areas\SinhVien\Views\web.config" />
     <Content Include="Areas\SinhVien\Views\QuaTrinhHoc\Index.cshtml" />
     <Content Include="Areas\GiangVien\Views\DiemDanh\CreateDiemDanhBySinhVienByLopMonByNgay.cshtml" />
-    <Content Include="Areas\PhongDaoTao\Views\SinhVienLopMon\CapNhatSinhVienLopMon.cshtml" />
-    <Content Include="Areas\PhongDaoTao\Views\SinhVienLopMon\_ChonLopMon.cshtml" />
-    <Content Include="Areas\PhongDaoTao\Views\SinhVienLopMon\_DataSinhVien.cshtml" />
-    <Content Include="Areas\PhongDaoTao\Views\SinhVienLopMon\_TimKiemLopMon.cshtml" />
-    <Content Include="Areas\PhongDaoTao\Views\SinhVienLopMon\DanhSachLopMon.cshtml" />
-    <Content Include="Areas\PhongDaoTao\Views\SinhVienLopMon\_DataLopMon.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>

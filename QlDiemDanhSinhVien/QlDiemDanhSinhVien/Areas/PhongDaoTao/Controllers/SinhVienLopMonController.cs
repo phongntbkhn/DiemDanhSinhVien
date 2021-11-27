@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Dapper;
 using Model.DiemDanhSV;
 using QlDiemDanhSinhVien.Custom;
 using QlDiemDanhSinhVien.Models;
@@ -21,24 +19,7 @@ namespace QlDiemDanhSinhVien.Areas.PhongDaoTao.Controllers
         // GET: PhongDaoTao/SinhVienLopMon
         public ActionResult Index()
         {
-            string sql = @"
-                        SELECT svlm.*
-                        , l.TenLop
-                        , mh.TenMonHoc
-                        , lm.PhongHoc
-                        , sv.HoTen as TenSinhVien
-                        , gv.HoTen as TenGiangVien
-                        FROM SINH_VIEN_LOP_MON svlm
-                        INNER JOIN LOP_MON lm on lm.id = svlm.IdLopMon
-                        INNER JOIN SINH_VIEN sv on sv.id = svlm.IdSinhVien
-                        INNER JOIN LOP l on l.Id = lm.IdLop
-                        INNER JOIN DM_MON_HOC mh on mh.id = lm.IdMonHoc
-                        INNER JOIN GIANG_VIEN gv on gv.id = lm.IdGiangVien
-                        ";
-
-            int returnCode = 0;
-            List<SinhVienLopMonVM> sinhVienLopMonVMs = GetData<SinhVienLopMonVM>(sql, ref returnCode); 
-            return View(sinhVienLopMonVMs);
+            return View(db.SINH_VIEN_LOP_MON.ToList());
         }
 
         // GET: PhongDaoTao/SinhVienLopMon/Details/5
@@ -267,78 +248,6 @@ namespace QlDiemDanhSinhVien.Areas.PhongDaoTao.Controllers
 
                 db.DIEM_DANH.Add(dIEM_DANH);
             }
-        }
-
-        public ActionResult CapNhatSinhVienLopMon()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult TimKiemHocSinhLopMonByLopMon(int id_lop_mon)
-        {
-            List<SinhVienLopMonVM> sinhVienLopMonVMs = new List<SinhVienLopMonVM>();
-            string sql = @"
-                        SELECT sv.id
-                        , sv.HoTen
-                        , svlm.IdLopMon
-                        FROM SINH_VIEN sv
-                        LEFT JOIN SINH_VIEN_LOP_MON svlm on svlm.IdSinhVien = sv.id and svlm.IdLopMon = @id_lop_mon
-                        ";
-            int returnCode = 0;
-            List<SqlParameter> sqlParameters = new List<SqlParameter>();
-            var param = new DynamicParameters();
-            param.Add("@id_lop_mon", id_lop_mon);
-
-            sinhVienLopMonVMs = GetData<SinhVienLopMonVM>(sql, ref returnCode, param);
-
-            ViewData["sinhVienLopMonVMs"] = sinhVienLopMonVMs;
-            return Json(new
-            {
-                data = sinhVienLopMonVMs.Count == 0 ? new SinhVienLopMonVM() : sinhVienLopMonVMs.ToList()[0],
-                html = RenderToString(PartialView("_DataHocBaDienTu")),
-            }, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult DanhSachLopMon()
-        {
-            string sql = @"SELECT lm.*
-                        , l.TenLop
-                        , mh.TenMonHoc
-                        , gv.HoTen AS TenGiangVien
-                        FROM LOP_MON lm
-                        INNER JOIN LOP l on l.Id = lm.IdLop
-                        INNER JOIN DM_MON_HOC mh on mh.id = lm.IdMonHoc
-                        INNER JOIN GIANG_VIEN gv on gv.id = lm.IdGiangVien";
-            int returnCode = 0;
-            List<LopMonVM> lopMonVMs = GetData<LopMonVM>(sql, ref returnCode);
-
-            ViewBag.Total = lopMonVMs.Count;
-            ViewData["list_lop_mon"] = lopMonVMs;
-            return View();
-        }
-
-        public List<LopMonVM> getListLopMonVM()
-        {
-            List<LopMonVM> lst = new List<LopMonVM>();
-
-            return lst;
-        }
-
-        [HttpGet]
-        public ActionResult TimKiemLopMon()
-        {
-            List<LopMonVM> lst = new List<LopMonVM>();
-            lst = getListLopMonVM();
-
-            ViewBag.Total = lst.Count;
-            ViewData["TraCuuHocBaDienTu"] = lst;
-
-            return Json(new
-            {
-                data = lst.Count == 0 ? new LopMonVM() : lst.ToList()[0],
-                html = RenderToString(PartialView("_DataHocBaDienTu")),
-            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

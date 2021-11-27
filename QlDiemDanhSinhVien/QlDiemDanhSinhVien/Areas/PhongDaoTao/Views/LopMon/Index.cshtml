@@ -1,6 +1,5 @@
 ﻿@using QlDiemDanhSinhVien.Common;
-@using QlDiemDanhSinhVien.Models
-@model IEnumerable<LopMonVM>
+@model IEnumerable<Model.DiemDanhSV.LOP_MON>
 
 @{
     ViewBag.Title = Resource.LOP_MON_DANH_SACH;
@@ -23,9 +22,9 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Tên lớp</th>
-                            <th>Tên môn hoc</th>
-                            <th>Tên giảng viên</th>
+                            <th>Id lớp</th>
+                            <th>Id môn</th>
+                            <th>Id giảng viên</th>
                             <th>Phòng học</th>
                             <th>Thao tác</th>
                         </tr>
@@ -35,9 +34,9 @@
                         {
                             <tr>
                                 <td>@item.id</td>
-                                <td>@item.TenLop</td>
-                                <td>@item.TenMonHoc</td>
-                                <td>@item.TenGiangVien</td>
+                                <td>@item.IdLop</td>
+                                <td>@item.IdMonHoc</td>
+                                <td>@item.IdGiangVien</td>
                                 <td>@item.PhongHoc</td>
                                 <td>
                                     @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.id }) |

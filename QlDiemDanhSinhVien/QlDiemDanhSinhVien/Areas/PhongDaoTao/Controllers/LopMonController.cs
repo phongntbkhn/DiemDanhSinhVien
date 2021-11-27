@@ -7,30 +7,17 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.DiemDanhSV;
-using QlDiemDanhSinhVien.Custom;
-using QlDiemDanhSinhVien.Models;
 
 namespace QlDiemDanhSinhVien.Areas.PhongDaoTao.Controllers
 {
-    public class LopMonController : BaseController
+    public class LopMonController : Controller
     {
         private DiemDanhSvDbEntities db = new DiemDanhSvDbEntities();
 
         // GET: PhongDaoTao/LopMon
         public ActionResult Index()
         {
-            string sql = @"SELECT lm.*
-                        , l.TenLop
-                        , mh.TenMonHoc
-                        , gv.HoTen AS TenGiangVien
-                        FROM LOP_MON lm
-                        INNER JOIN LOP l on l.Id = lm.IdLop
-                        INNER JOIN DM_MON_HOC mh on mh.id = lm.IdMonHoc
-                        INNER JOIN GIANG_VIEN gv on gv.id = lm.IdGiangVien";
-            int returnCode = 0;
-            List<LopMonVM> lopMonVMs = GetData<LopMonVM>(sql, ref returnCode);
-
-            return View(lopMonVMs);
+            return View(db.LOP_MON.ToList());
         }
 
         // GET: PhongDaoTao/LopMon/Details/5

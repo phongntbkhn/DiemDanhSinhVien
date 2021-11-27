@@ -29,8 +29,11 @@
                             <th>Tên hiển thị</th>
                             <th>Tên quyền</th>
                             <th>Là quản lý ĐT</th>
+                            <th>ID  quản lý ĐT</th>
                             <th>Là giảng viên</th>
+                            <th>ID giảng viên</th>
                             <th>Là sinh viên</th>
+                            <th>ID sinh viên</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
@@ -58,8 +61,11 @@
                             <td>@item.TenHienThi</td>
                             <td>@item.TenQuyen</td>
                             <td>@item.IsQlPhongDT</td>
+                            <td>@item.IdQlPhongDT</td>
                             <td>@item.IsGiangVien</td>
+                            <td>@item.IdGiangVien</td>
                             <td>@item.IsSinhVien</td>
+                            <td>@item.IdSinhVien</td>
                             <td>
                                 @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.id }) |
                                 @Html.ActionLink("Chi tiết", "Details", new { id = item.id }) |
