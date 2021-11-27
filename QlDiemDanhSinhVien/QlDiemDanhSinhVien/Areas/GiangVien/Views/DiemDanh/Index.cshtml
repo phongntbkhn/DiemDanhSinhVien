@@ -1,0 +1,57 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model IEnumerable<Model.DiemDanhSV.DIEM_DANH>
+
+@{
+    ViewBag.Title = Resource.DIEM_DANH_SINH_VIEN_DANH_SACH;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.DIEM_DANH_SINH_VIEN_DANH_SACH</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.DIEM_DANH_SINH_VIEN_DANH_SACH, "Index", "DiemDanh")</li>
+        @*<li class="breadcrumb-item active">Danh sách cán bộ phòng đào tạo</li>*@
+    </ol>
+    <div class="col-sm-6 col-md-2 btn-action-margin">
+        @*@Html.ActionLink("Thêm mới", "Create", "DiemDanh", null, new { @class = "btn btn-success btn-block" })*@
+        @Html.ActionLink("Nhập điểm danh", "CreateDiemDanhBySinhVienByLopMonByNgay", "DiemDanh", null, new { @class = "btn btn-success btn-block" })
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Id sinh viên</th>
+                            <th>Id lớp môn</th>
+                            <th>Số ngày học</th>
+                            <th>Ngày học</th>
+                            <th>Trạng thái học</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.IdSinhVien</td>
+                                <td>@item.IdLopMon</td>
+                                <td>@item.SoNgayHoc</td>
+                                <td>@item.NgayHoc</td>
+                                <td>@item.TrangThaiHoc</td>
+                                <td>
+                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.id }) |
+                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.id }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

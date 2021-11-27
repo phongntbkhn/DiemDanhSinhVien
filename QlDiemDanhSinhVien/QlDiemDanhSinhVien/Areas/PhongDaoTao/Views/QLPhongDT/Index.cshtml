@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Model.DiemDanhSV.QL_PHONG_DT>
+
+@{
+    ViewBag.Title = "Danh sách cán bộ đào tạo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Danh sách cán bộ đào tạo</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink("Danh sách cán bộ phòng đào tạo", "Index", "QLPhongDT")</li>
+        @*<li class="breadcrumb-item active">Danh sách cán bộ phòng đào tạo</li>*@
+    </ol>
+    <div class="col-sm-6 col-md-2 btn-action-margin">
+        @Html.ActionLink("Thêm mới", "Create", "QLPhongDT", null, new { @class = "btn btn-success btn-block" })
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Họ tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Quê quán</th>
+                            <th>Địa chỉ hiện tại</th>
+                            <th>Giới tính</th>
+                            <th>Số điện thoại</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    @*<tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Họ tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Quê quán</th>
+                            <th>Địa chỉ hiện tại</th>
+                            <th>Giới tính</th>
+                            <th>Số điện thoại</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </tfoot>*@
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.HoTen</td>
+                                <td>@item.NgaySinh</td>
+                                <td>@item.QueQuan</td>
+                                <td>@item.DiaChiHienTai</td>
+                                <td>@item.GioiTinh</td>
+                                <td>@item.SoDienThoai</td>
+                                <td>
+                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.id }) |
+                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.id }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

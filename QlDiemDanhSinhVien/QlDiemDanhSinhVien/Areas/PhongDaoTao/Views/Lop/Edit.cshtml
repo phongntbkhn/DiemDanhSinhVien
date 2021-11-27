@@ -1,0 +1,52 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model Model.DiemDanhSV.LOP
+
+@{
+    ViewBag.Title = Resource.LOP_CAP_NHAT;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.LOP_CAP_NHAT</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.LOP_DANH_SACH, "Index", "TAI_KHOAN")</li>
+        <li class="breadcrumb-item active">@Resource.LOP_CAP_NHAT</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TenLop, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TenLop, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenLop, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

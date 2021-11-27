@@ -1,0 +1,48 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model IEnumerable<Model.DiemDanhSV.LOP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.LOP_DANH_SACH</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.LOP_DANH_SACH, "Index", "Lop")</li>
+        @*<li class="breadcrumb-item active">Danh sách cán bộ phòng đào tạo</li>*@
+    </ol>
+    <div class="col-sm-6 col-md-2 btn-action-margin">
+        @Html.ActionLink("Thêm mới", "Create", "Lop", null, new { @class = "btn btn-success btn-block" })
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Tên lớp</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.TenLop</td>
+                                <td>
+                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

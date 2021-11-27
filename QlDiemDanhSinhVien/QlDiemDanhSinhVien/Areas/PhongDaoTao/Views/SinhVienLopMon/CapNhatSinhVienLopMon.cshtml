@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "CapNhatSinhVienLopMon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cập nhật sinh viên lớp môn</h1>
+
+<table style="width: 100%">
+    <tr>
+        <td>
+            <div>
+                <div class="SearchCriterial">
+                    @Html.Partial("_ChonLopMon")
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="SearchResult">
+                @Html.Partial("_DataSinhVien")
+            </div>
+        </td>
+    </tr>
+</table>
+

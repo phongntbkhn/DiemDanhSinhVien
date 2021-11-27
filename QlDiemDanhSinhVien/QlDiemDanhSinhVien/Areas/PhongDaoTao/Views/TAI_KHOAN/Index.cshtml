@@ -1,0 +1,82 @@
+﻿@using Model.ViewModel;
+
+@{
+    ViewBag.Title = "Danh sách tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    List<TaiKhoanVM> taiKhoanVMs = ViewData["lst_tai_khoan"] as List<TaiKhoanVM>;
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Danh sách tài khoản</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink("Danh sách tài khoản", "Index", "TAI_KHOAN")</li>
+        @*<li class="breadcrumb-item active">Danh sách tài khoản</li>*@
+    </ol>
+    <div class="col-sm-6 col-md-2 btn-action-margin">
+        @Html.ActionLink("Thêm mới", "Create", "TAI_KHOAN", null, new { @class = "btn btn-success btn-block" })
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Tên hiển thị</th>
+                            <th>Tên quyền</th>
+                            <th>Là quản lý ĐT</th>
+                            <th>ID  quản lý ĐT</th>
+                            <th>Là giảng viên</th>
+                            <th>ID giảng viên</th>
+                            <th>Là sinh viên</th>
+                            <th>ID sinh viên</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    @*<tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Tên hiển thị</th>
+                            <th>Tên quyền</th>
+                            <th>Là quản lý ĐT</th>
+                            <th>ID  quản lý ĐT</th>
+                            <th>Là giảng viên</th>
+                            <th>ID giảng viên</th>
+                            <th>Là sinh viên</th>
+                            <th>ID sinh viên</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </tfoot>*@
+                    <tbody>
+                        @foreach (TaiKhoanVM item in taiKhoanVMs)
+                        {
+                        <tr>
+                            <td>@item.id</td>
+                            <td>@item.TenDangNhap</td>
+                            <td>@item.TenHienThi</td>
+                            <td>@item.TenQuyen</td>
+                            <td>@item.IsQlPhongDT</td>
+                            <td>@item.IdQlPhongDT</td>
+                            <td>@item.IsGiangVien</td>
+                            <td>@item.IdGiangVien</td>
+                            <td>@item.IsSinhVien</td>
+                            <td>@item.IdSinhVien</td>
+                            <td>
+                                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.id }) |
+                                @Html.ActionLink("Chi tiết", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

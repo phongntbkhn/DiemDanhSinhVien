@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "ĐĂNG NHẬP";
+    Layout = null;
+    var resetValText = ViewData["Message"] == null ? true : false;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Đăng nhập</title>
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">ĐĂNG NHẬP</h3></div>
+                                <div class="card-body">
+                                    <form method="post" action="Login" id="FormLogin">
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputEmailAddress">Tên đăng nhập</label>
+                                            @Html.TextBox("username", "", new { @class = "form-control py-4", id = "username", placeholder = @Html.Raw("Tên đăng nhập") })<i class="uname-icon"></i>
+                                            <div style='color: red; display: none;' id="userNameNull">@Html.Raw("(*) Bạn chưa nhập tên đăng nhập")</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputPassword">Mật khẩu</label>
+                                            @Html.TextBox("password", "", new { @class = "form-control py-4", id = "password", type = "password", autocomplete = "off", placeholder = @Html.Raw("Mật khẩu") })
+                                            <div style='color: red; display: none;' id="passNull">@Html.Raw("Bạn chưa nhập mật khẩu")</div>
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-block btn-login" onclick="LoginClick();" id="LoginButton">Đăng nhập</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/scripts.js"></script>
+
+    <script>
+        function LoginClick() {
+            if (($("#username").val() == null || $("#username").val() == "")) {
+                $("#userNameNull").show();
+                return false;
+            }
+            if (($("#password").val() == null || $("#password").val() == "")) {
+                $("#passNull").show();
+                return false;
+            }
+
+            $("#FormLogin").submit();
+            return true;
+        }
+    </script>
+</body>
+</html>
+

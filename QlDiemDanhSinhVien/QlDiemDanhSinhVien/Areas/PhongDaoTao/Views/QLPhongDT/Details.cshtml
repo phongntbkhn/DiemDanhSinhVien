@@ -1,0 +1,106 @@
+﻿@model Model.DiemDanhSV.QL_PHONG_DT
+
+@{
+    ViewBag.Title = "Xem chi tiết thông tin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Xem chi tiết thông tin</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink("Danh sách cán bộ phòng đào tạo", "Index", "TAI_KHOAN")</li>
+        <li class="breadcrumb-item active">Xem chi tiết thông tin</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HoTen)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HoTen)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySinh)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySinh)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.QueQuan)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.QueQuan)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DiaChiHienTai)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DiaChiHienTai)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GioiTinh)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.GioiTinh)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SoDienThoai)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SoDienThoai)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgayTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgayTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySua)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiSua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiSua)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>

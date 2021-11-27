@@ -1,0 +1,49 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@using QlDiemDanhSinhVien.Models;
+
+@{
+    List<LopMonVM> lst_lopmon = ViewData["list_lop_mon"] as List<LopMonVM>;
+    string ma_hoc_sinh = ViewData["ma_hoc_sinh"] as string;
+    if (lst_lopmon == null)
+    {
+        lst_lopmon = new List<LopMonVM>();
+    }
+}
+
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Tên lớp</th>
+                            <th>Tên môn hoc</th>
+                            <th>Tên giảng viên</th>
+                            <th>Phòng học</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in lst_lopmon)
+                        {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.TenLop</td>
+                                <td>@item.TenMonHoc</td>
+                                <td>@item.TenGiangVien</td>
+                                <td>@item.PhongHoc</td>
+                                <td>
+                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.id }) |
+                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.id }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

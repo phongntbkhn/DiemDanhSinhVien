@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "DanhSachLopMon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    #frmSearch input[type="text"]:disabled {
+        background: #eee;
+    }
+</style>
+
+<table style="width: 100%">
+    <tr>
+        <td>
+            <div>
+                <div class="SearchCriterial">
+                    @Html.Partial("_TimKiemLopMon")
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="SearchResult">
+                @Html.Partial("_DataLopMon")
+            </div>
+        </td>
+    </tr>
+</table>

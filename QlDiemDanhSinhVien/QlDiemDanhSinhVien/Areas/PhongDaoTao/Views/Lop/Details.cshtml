@@ -1,0 +1,72 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model Model.DiemDanhSV.LOP
+
+@{
+    ViewBag.Title = Resource.LOP_CHI_TIET;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.LOP_CHI_TIET</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.LOP_DANH_SACH, "Index", "Lop")</li>
+        <li class="breadcrumb-item active">@Resource.LOP_CHI_TIET</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TenLop)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TenLop)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgayTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgayTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySua)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiSua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiSua)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,141 @@
+﻿@model Model.DiemDanhSV.TAI_KHOAN
+
+@{
+    ViewBag.Title = "Xem chi tiết tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Xem chi tiết tài khoản</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink("Danh sách tài khoản", "Index", "TAI_KHOAN")</li>
+        <li class="breadcrumb-item active">Xem chi tiết tài khoản</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TenDangNhap)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TenDangNhap)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MatKhau)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.MatKhau)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TenHienThi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TenHienThi)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IdQuyen)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IdQuyen)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsQlPhongDT)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsQlPhongDT)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsGiangVien)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsGiangVien)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsSinhVien)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsSinhVien)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IdQlPhongDT)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IdQlPhongDT)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IdGiangVien)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IdGiangVien)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IdSinhVien)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IdSinhVien)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgayTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgayTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySua)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiSua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiSua)
+                    </dd>
+
+                </dl>
+            </div>
+
+            <div>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,135 @@
+﻿@using QlDiemDanhSinhVien.Models;
+
+@{
+
+    List<SinhVienLopMonVM> lstPK = ViewData["sinhVienLopMonVMs"] as List<SinhVienLopMonVM>;
+    string ma_hoc_sinh = ViewData["ma_hoc_sinh"] as string;
+    if (lstPK == null)
+    {
+        lstPK = new List<SinhVienLopMonVM>();
+    }
+    int total = 0;
+    if (ViewBag.Total != null)
+    {
+        total = (int)ViewBag.Total;
+    }
+    var grid = new WebGrid(
+        rowsPerPage: 10,
+                          canPage: true,
+                          canSort: false
+                          //ajaxUpdateContainerId: "grid"
+                          );
+    grid.Bind(lstPK, autoSortAndPage: false, rowCount: total);
+}
+<style>
+    .width-150 {
+        width: 150px;
+    }
+
+    .width-70 {
+        width: 70px;
+    }
+
+    .width-120 {
+        width: 120px;
+    }
+</style>
+
+
+<div id="grid">
+    <div id="actionResult" style="margin-top: 10px;display: flex; align-items: center">
+        <div style="float:left;margin-left:5px;">
+            @Html.Label(total + ": Học sinh", new { id = "lblSoHocSinh", style = "font-weight: bold;" })
+        </div>
+        <div style="float:right;margin-right:30px;margin-left: auto">
+            <a class="btn-add" href="javascript:void(0)" onclick="Import()">Lấy thông tin học bạ từ tập tin</a>
+        </div>
+        <div style="float:right;margin-right:30px;">
+            <a class="btn-print" href='javascript:void(0)' onclick="OnPrint(@lstPK.Count, @ma_hoc_sinh)">In học bạ</a>
+        </div>
+    </div>
+    <div style="clear:both;padding-top:5px;">
+        @grid.Table(
+                tableStyle: "webGrid",
+                headerStyle: "head",
+                alternatingRowStyle: "alt",
+                selectedRowStyle: "select",
+                columns: grid.Columns(
+                grid.Column("TenLop", "Tên lớp", style: "center width-70"),
+                grid.Column("TenMonHoc", "Tên môn học", style: "center"),
+                grid.Column("PhongHoc", "Phòng học", style: "width-150"),
+                grid.Column("TenSinhVien", "Tên sinh viên", style: "center width-70"),
+                grid.Column("TenGiangVien", "Tên giảng viên", style: "center")
+            )
+            )
+        @if (!lstPK.Any())
+        {
+            <div style="color: red; text-align: center;">
+                @Html.Raw("Không có dữ liệu sinh viên")
+            </div>
+        }
+        else
+        {
+            <div class="pagination pagination-small pagination-right" style="margin-top: 5px;">
+                @grid.PagerList(mode: WebGridPagerModes.All)
+            </div>
+        }
+
+    </div>
+</div>
+<div id="frmImport" title="Thêm thông tin học bạ từ tập tin">
+</div>
+<script>
+    $(".pagination a").click(function (e) {
+        if (!$(this).parent().hasClass("disabled")) {
+            e.preventDefault();
+            var str = this.href.match(/[\?&]page=\d+/i)[0];
+            $("#page").val(str.split('=')[1]);
+            $("#frmSearch").submit();
+        } else {
+            e.preventDefault();
+        }
+    });
+
+    $(document).ready(function () {
+        $('.grid tbody tr').live('hover', function () {
+            $(this).toggleClass('clickable');
+        })
+    })
+
+    function success(data) {
+        if (data.data.HO_TEN == null) {
+            CommonJS.alert("Không tồn tại mã học sinh này . Đề nghị thầy/cô kiểm tra lại");
+        }
+        $('#grid').parent().undelegate('#grid a[data-swhglnk="true"]', 'click');
+        $("#grid").html(data.html);
+        $('#ho_ten').val(data.data.HO_TEN)
+        $('#so_cmnd').val(data.data.CMND)
+        $('#ngay_sinh').val(data.data.NGAY_SINH)
+        $('#dia_chi').val(data.data.CHO_O_HIEN_NAY)
+        $("#page").val(1);
+    }
+
+    $("#frmImport").dialog({
+        autoOpen: false,
+        modal: true,
+        width: 550,
+        height: 280,
+        resizable: false,
+        open: function (event, ui) {
+            $(".ui-widget-content").removeClass("ui-widget");
+            $(".ui-button").removeClass("ui-widget");
+        },
+        show: {
+            effect: "blind",
+            duration: 200
+        },
+        hide: {
+            effect: "blind",
+            duration: 200
+        },
+        close: function () {
+            $("#frmImport").html("");
+        }
+    });
+</script>

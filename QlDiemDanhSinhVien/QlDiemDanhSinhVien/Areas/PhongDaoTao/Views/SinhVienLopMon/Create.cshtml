@@ -1,0 +1,68 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model Model.DiemDanhSV.SINH_VIEN_LOP_MON
+
+@{
+    ViewBag.Title = Resource.SINH_VIEN_LOP_MON_THEM_MOI;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<SelectListItem> lstSinhVien = ViewData["lst_sinhvien"] as List<SelectListItem>;
+    List<SelectListItem> lstLopMon = ViewData["lst_lopmon"] as List<SelectListItem>;
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.SINH_VIEN_LOP_MON_THEM_MOI</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.SINH_VIEN_LOP_MON_DANH_SACH, "Index", "SinhVienLopMon")</li>
+        <li class="breadcrumb-item active">@Resource.SINH_VIEN_LOP_MON_THEM_MOI</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>SINH_VIEN_LOP_MON</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdSinhVien, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.IdSinhVien, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownList("IdSinhVien", lstSinhVien, new { @style = "width: 251px" })
+                            @Html.ValidationMessageFor(model => model.IdSinhVien, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdLopMon, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.IdLopMon, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownList("IdLopMon", lstLopMon, new { @style = "width: 251px" })
+                            @Html.ValidationMessageFor(model => model.IdLopMon, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,121 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model Model.DiemDanhSV.GIANG_VIEN
+
+@{
+    ViewBag.Title = Resource.GIANG_VIEN_XOA;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.GIANG_VIEN_XOA</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.GIANG_VIEN_DANH_SACH, "Index", "TAI_KHOAN")</li>
+        <li class="breadcrumb-item active">@Resource.GIANG_VIEN_XOA</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div>
+                <h3 style="color:red">@Resource.CO_XOA_DU_LIEU_KHONG</h3>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HoTen)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HoTen)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySinh)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySinh)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.QueQuan)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.QueQuan)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DiaChiHienTai)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DiaChiHienTai)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GioiTinh)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.GioiTinh)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SoDienThoai)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SoDienThoai)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgayTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgayTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySua)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiSua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiSua)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default btn-danger" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+

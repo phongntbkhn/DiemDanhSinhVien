@@ -1,0 +1,50 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model Model.DiemDanhSV.DM_MON_HOC
+
+@{
+    ViewBag.Title = Resource.DM_MON_HOC_CHI_TIET;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.DM_MON_HOC_CHI_TIET</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.DM_MON_HOC_DANH_SACH, "Index", "DmMonHoc")</li>
+        <li class="breadcrumb-item active">@Resource.DM_MON_HOC_CHI_TIET</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+            <div>
+                <h4>DM_MON_HOC</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TenMonHoc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TenMonHoc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SoTinChi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SoTinChi)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+

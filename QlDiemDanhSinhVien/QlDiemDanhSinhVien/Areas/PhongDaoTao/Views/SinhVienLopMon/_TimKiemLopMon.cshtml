@@ -1,0 +1,30 @@
+﻿@using (Ajax.BeginForm("TimKiemLopMon", "SinhVienLopMon", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "GET",
+    OnFailure = "failure",
+    UpdateTargetId = "grid",
+    OnSuccess = "success"
+}, new { id = "frmSearch" }))
+{
+    <fieldset class="fieldset">
+        <legend>Thông tin tìm kiếm</legend>
+        <div style="display:table">
+            <div style="display:table-cell;">
+                <label style="width:120px;display:inline-block;">Tên lớp</label>
+                @Html.TextBox("ten_lop", "", new { @style = "width: 180px;", @class = "e-input" })
+            </div>
+            <div style="display:table-cell;">
+                <label style="width:120px;display:inline-block;">Tên môn học</label>
+                @Html.TextBox("ten_mon_hoc", "", new { @style = "width: 180px;", @class = "e-input" })
+            </div>
+            <div style="display:table-cell;">
+                <label style="width:120px;display:inline-block;">Tên giảng viên</label>
+                @Html.TextBox("ten_giang_vien", "", new { @style = "width: 180px;", @class = "e-input" })
+            </div>
+            <div style="display:table-cell;">
+                <input id="btnSearch" type="submit" value="Tìm kiếm" style="width: 100px;margin-left:99px;" />
+            </div>
+        </div>
+    </fieldset>
+}

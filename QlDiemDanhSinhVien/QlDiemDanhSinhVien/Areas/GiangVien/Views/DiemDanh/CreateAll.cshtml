@@ -1,0 +1,33 @@
+﻿@using QlDiemDanhSinhVien.Models;
+@model List<InsertMultipleHocSinhLopMon>
+
+@{
+    ViewBag.Title = "CreateAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (@Html.BeginForm("CreateAll", "DiemDanh", FormMethod.Post))
+{
+    @Html.TextBox("lopmon", "", new { @class = "form-control py-4", id = "username", placeholder = @Html.Raw("Tên đăng nhập") })<i class="uname-icon"></i>
+    <table>
+        <tr>
+            <th></th>
+            <th>Họ tên</th>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td> @Html.HiddenFor(model => model[i].id, new { @readonly = "readonly" })</td>
+                <td>@Html.EditorFor(model => model[i].HoTen, new { @readonly = "readonly" })</td>
+                <td>@Html.CheckBoxFor(model => model[i].ischeck)</td>
+            </tr>
+        }
+    </table>
+    <p><input type="submit" value="Save" /></p>
+    <p style="color:green; font-size:12px;">
+        @ViewBag.Message
+    </p>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

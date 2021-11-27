@@ -1,0 +1,69 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@using QlDiemDanhSinhVien.Models;
+@model List<InsertMultipleHocSinhLopMon>
+
+@{
+    ViewBag.Title = "CreateAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<SelectListItem> lstLopMon = ViewData["lst_lopmon"] as List<SelectListItem>;
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.SINH_VIEN_LOP_MON_THEM_MOI</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.SINH_VIEN_LOP_MON_DANH_SACH, "Index", "SinhVienLopMon")</li>
+        @*<li class="breadcrumb-item active">Danh sách cán bộ phòng đào tạo</li>*@
+    </ol>
+    <div class="col-sm-6 col-md-2 btn-action-margin">
+        @Html.ActionLink("Thêm mới", "Create", "SinhVienLopMon", null, new { @class = "btn btn-success btn-block" })
+    </div>
+    @using (@Html.BeginForm("CreateAll", "SinhVienLopMon", FormMethod.Post))
+    {
+        <div class="card mb-6">
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("Chọn lớp môn cho thí sinh", htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("id_lop_mon", lstLopMon, new { @style = "width: 251px" })
+                    </div>
+                </div>
+
+                <div class="table">
+                    <table class="table table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id sinh viên</th>
+                                <th>Tên sinh viên</th>
+                                <th>Chọn sinh viên</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <tr>
+                                    <td>@Html.EditorFor(model => model[i].id, new { @readonly = "readonly", disabled = "disabled" })</td>
+                                    <td>@Html.EditorFor(model => model[i].HoTen, new { @readonly = "readonly" , disabled = "disabled" })</td>
+                                    <td>@Html.CheckBoxFor(model => model[i].ischeck)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

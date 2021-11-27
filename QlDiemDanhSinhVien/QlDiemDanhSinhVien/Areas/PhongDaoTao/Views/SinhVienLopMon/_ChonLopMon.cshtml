@@ -1,0 +1,19 @@
+﻿@using (Ajax.BeginForm("TimKiemHocSinhLopMonByLopMon", "SinhVienLopMon", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "GET",
+    OnFailure = "failure",
+    UpdateTargetId = "grid",
+    OnSuccess = "success"
+}, new { id = "frmSearch" }))
+{
+    <fieldset class="fieldset">
+        <legend>Thông tin tìm kiếm</legend>
+        <div style="display:table">
+            <div style="display:table-cell;">
+                <label style="width:120px;display:inline-block;">Mã học sinh</label>
+                @Html.TextBox("id_lop_mon", "", new { @style = "width: 180px;", @class = "e-input" })
+            </div>
+        </div>
+    </fieldset>
+}

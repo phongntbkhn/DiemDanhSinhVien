@@ -1,0 +1,57 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model Model.DiemDanhSV.DM_MON_HOC
+
+@{
+    ViewBag.Title = Resource.DM_MON_HOC_XOA;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.DM_MON_HOC_XOA</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.DM_MON_HOC_DANH_SACH, "Index", "DmMonHoc")</li>
+        <li class="breadcrumb-item active">@Resource.DM_MON_HOC_XOA</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+            <div>
+                <h3 style="color:red">@Resource.CO_XOA_DU_LIEU_KHONG</h3>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TenMonHoc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TenMonHoc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SoTinChi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SoTinChi)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default btn-danger" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+

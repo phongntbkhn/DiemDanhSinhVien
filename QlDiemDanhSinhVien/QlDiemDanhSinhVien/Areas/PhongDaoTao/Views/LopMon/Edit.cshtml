@@ -1,0 +1,89 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model Model.DiemDanhSV.LOP_MON
+
+@{
+    ViewBag.Title = Resource.LOP_MON_CAP_NHAT;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<SelectListItem> lstLop = ViewData["lst_lop"] as List<SelectListItem>;
+    List<SelectListItem> lstDmMonHoc = ViewData["lst_dm_mon_hoc"] as List<SelectListItem>;
+    List<SelectListItem> lstGiangVien = ViewData["lst_giang_vien"] as List<SelectListItem>;
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.LOP_MON_CAP_NHAT</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.LOP_MON_DANH_SACH, "Index", "LopMon")</li>
+        <li class="breadcrumb-item active">@Resource.LOP_MON_CAP_NHAT</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdLop, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.IdLop, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownList("IdLop", lstLop, new { @style = "width: 251px" })
+                            @Html.ValidationMessageFor(model => model.IdLop, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdMonHoc, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.IdMonHoc, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownList("IdMonHoc", lstDmMonHoc, new { @style = "width: 251px" })
+                            @Html.ValidationMessageFor(model => model.IdMonHoc, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdGiangVien, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.IdGiangVien, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownList("IdGiangVien", lstGiangVien, new { @style = "width: 251px" })
+                            @Html.ValidationMessageFor(model => model.IdGiangVien, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PhongHoc, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PhongHoc, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhongHoc, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

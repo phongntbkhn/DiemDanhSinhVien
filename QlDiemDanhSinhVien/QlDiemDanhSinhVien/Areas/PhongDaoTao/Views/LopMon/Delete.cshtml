@@ -1,0 +1,103 @@
+﻿@using QlDiemDanhSinhVien.Common;
+@model Model.DiemDanhSV.LOP_MON
+
+@{
+    ViewBag.Title = Resource.LOP_MON_XOA;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">@Resource.LOP_MON_XOA</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">@Html.ActionLink(Resource.LOP_MON_DANH_SACH, "Index", "LopMon")</li>
+        <li class="breadcrumb-item active">@Resource.LOP_MON_XOA</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IdLop)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IdLop)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IdMonHoc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IdMonHoc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IdGiangVien)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IdGiangVien)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhongHoc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PhongHoc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgayTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgayTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiTao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiTao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySua)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiSua)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiSua)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default btn-danger" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<h3>Are you sure you want to delete this?</h3>
+
